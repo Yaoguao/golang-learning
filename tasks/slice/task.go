@@ -45,3 +45,17 @@ func Unique(s []string) []string {
 //	}
 //	return res
 //}
+
+func InsertAt(s []int, index int, value int) []int {
+	res := make([]int, 0, len(s)+1)
+	for idx, elem := range s {
+		if index == idx || index < 0 {
+			res = append(res, value)
+		}
+		res = append(res, elem)
+	}
+	if index >= len(s) {
+		res = append(res, value)
+	}
+	return res
+}
