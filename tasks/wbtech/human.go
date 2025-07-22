@@ -1,4 +1,4 @@
-package people
+package main
 
 import "fmt"
 
@@ -17,4 +17,11 @@ type Action struct {
 
 func (a Action) ActionHuman() {
 	a.HelloHuman()
+}
+
+func main() {
+	h := Human{Name: "Ass"}
+	a := Action{h}
+
+	a.ActionHuman()
 }
