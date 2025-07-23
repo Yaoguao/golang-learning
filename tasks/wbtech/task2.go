@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"sync"
 )
 
 //	Задание 2
@@ -11,14 +11,16 @@ import (
 
 func main() {
 	arr := []int{2, 4, 6, 8, 10}
+	var wg sync.WaitGroup
 
 	for _, val := range arr {
+		wg.Add(1)
 		// Оборачиваем вызов анонимной функции в отдельный поток(горутину)
 		go func(n int) {
-			res := n * n
-			fmt.Println(res)
+			fmt.Println(n * n)
+			wg.Done()
 		}(val)
 	}
-	time.Sleep(2 * time.Second)
+	wg.Wait()
 	fmt.Println("Program has completed its work")
 }
