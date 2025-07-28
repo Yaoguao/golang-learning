@@ -23,6 +23,8 @@ func worker(ch chan bool) {
 	}
 }
 
+// 2 способ контекст?...
+
 func main() {
 	ch := make(chan bool)
 
